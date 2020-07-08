@@ -1,3 +1,8 @@
+:root {
+	--width-sidebar: 12em;
+}
+
+
 html {
 	font-size: 100%;
 	font-family: sans-serif;
@@ -12,10 +17,12 @@ body {
 
 nav {
 	font-size: 75%;
+	padding: 1em;
 }
 
 nav>a {
-	margin: 0.6em;
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
 }
 
 a {
@@ -27,7 +34,7 @@ a:hover, a:focus {
 }
 
 #content {
-	margin-left: 11em;
+	margin-left: calc(var(--width-sidebar) + 1em);
 	padding: 1.25em 1.5em 1.5em 1.5em;
 	border: 1px solid #a7d7f9;
 	border-right-width: 0;
@@ -46,7 +53,7 @@ a:hover, a:focus {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 10em;
+	width: var(--width-sidebar);
 }
 
 .w100 {
