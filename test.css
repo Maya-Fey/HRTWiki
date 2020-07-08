@@ -25,6 +25,26 @@ nav>a {
 	margin-bottom: 0.6em;
 }
 
+nav>h3 {
+	display: block;
+	background-image: linear-gradient(to right,rgba(200,204,209,0) 0,#c8ccd1 33%,#c8ccd1 66%,rgba(200,204,209,0) 100%);
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	background-size: 100% 1px;
+	color: #54595d;
+	border: 0;
+	padding: 0.25em 0;
+	font-size: 1em;
+	font-weight: normal;
+	cursor: default;
+}
+
+nav>h3>span {
+	color: #54595d;
+	font-weight: normal;
+	cursor: default;
+}
+
 a {
 	text-decoration: none;
 }
