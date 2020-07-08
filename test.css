@@ -1,0 +1,53 @@
+html {
+	font-size: 100%;
+	font-family: sans-serif;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #f6f6f6;
+	overflow-y: scroll;
+}
+
+nav {
+	font-size: 75%;
+}
+
+a:hover, a:focus {
+	text-decoration: underline;
+}
+
+#content {
+	margin-left: 11em;
+	padding: 1.25em 1.5em 1.5em 1.5em;
+	border: 1px solid #a7d7f9;
+	border-right-width: 0;
+	direction: ltr;
+	background-color: white;
+}
+
+#header-spacer {
+	background-image: linear-gradient(to bottom,#ffffff 50%,#f6f6f6 100%);
+	background-position: bottom left;
+	height: 5em;
+}
+
+#sidebar {
+	padding-left: 0.5em;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 10em;
+}
+
+.w100 {
+	width: 100%;
+}
+
+.external {
+	background-position: center right;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(transparent,transparent),url(external.svg);
+	padding-right: 13px;
+}
