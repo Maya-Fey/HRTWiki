@@ -86,3 +86,11 @@ a:hover, a:focus {
 	background-image: linear-gradient(transparent,transparent),url(external.svg);
 	padding-right: 13px;
 }
+
+.dict {
+	background-position: center right;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(transparent,transparent),url(dict.svg);
+	padding-right: 16px;
+	background-size: 13px;
+}
