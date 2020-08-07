@@ -20,6 +20,20 @@ nav {
 	padding: 1em;
 }
 
+h1 {
+	border-bottom: 1px solid #a2a9b1;
+	font-family: 'Linux Libertine','Georgia','Times',serif;
+	font-weight: 400;
+	margin-bottom: 0.25em;
+}
+
+h2 {
+	border-bottom: 1px solid #a2a9b1;
+	font-family: 'Linux Libertine','Georgia','Times',serif;
+	font-weight: 400;
+	margin-bottom: 0.25em;
+}
+
 nav>a {
 	margin-top: 0.6em;
 	margin-bottom: 0.6em;
