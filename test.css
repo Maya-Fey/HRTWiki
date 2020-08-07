@@ -129,3 +129,64 @@ a:hover, a:focus {
 	font-weight: 700;
 	padding-bottom: 0.33em;
 }
+
+.disabled {
+	color: #F22;
+}
+
+#contents {
+	border-collapse: collapse;
+	border: 1px solid #a2a9b1;
+	background-color: #f8f9fa;
+	display: inline-block;
+	padding: 0.4em;
+	margin: 1em;
+}
+
+#contents h2 {
+	border: none;
+	font-size: 1em;
+	font-family: sans-serif;
+	font-weight: 700;
+	display: inline;
+}
+
+#contents ul {
+	list-style: none;
+	padding-left: 0.2em;
+	margin: 0;
+}
+
+#contents li {
+	margin: 0.33em;
+}
+
+#contents ul>li>ul {
+	padding-left: 1.2em;
+}
+
+.contentsno {
+	font-color: black;
+}
+
+#contentsshowhide {
+	font-size: 0.75em;
+	color: blue;
+}
+
+#contentsshowhide:hover {
+	text-decoration: underline;
+}
+
+#contentsshowhide:before {
+	content: "[";
+}
+
+#contentsshowhide:after {
+	content: "]";
+}
+
+#subheading {
+	font-size: 0.9em;
+	margin-bottom: 1.5em;
+}
