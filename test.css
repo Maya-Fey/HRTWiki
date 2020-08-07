@@ -25,6 +25,7 @@ h1 {
 	font-family: 'Linux Libertine','Georgia','Times',serif;
 	font-weight: 400;
 	margin-bottom: 0.25em;
+	overflow: hidden;
 }
 
 h2 {
@@ -32,6 +33,7 @@ h2 {
 	font-family: 'Linux Libertine','Georgia','Times',serif;
 	font-weight: 400;
 	margin-bottom: 0.25em;
+	overflow: hidden;
 }
 
 nav>a {
@@ -107,4 +109,23 @@ a:hover, a:focus {
 	background-image: linear-gradient(transparent,transparent),url(dict.svg);
 	padding-right: 16px;
 	background-size: 13px;
+}
+
+.aside {
+	border-collapse: collapse;
+	border: 1px solid #a2a9b1;
+	background-color: #f8f9fa;
+	float: right;
+	clear: right;
+	margin: 0.25em;
+}
+
+.aside td {
+	border: 1px solid #a2a9b1;
+	padding: 0.2em;
+}
+
+.aside caption {
+	font-weight: 700;
+	padding-bottom: 0.33em;
 }
