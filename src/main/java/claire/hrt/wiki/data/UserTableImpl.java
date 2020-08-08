@@ -92,4 +92,16 @@ public class UserTableImpl implements UserTable {
 
 	}
 
+	@Override
+	public void initialize(DataContext context) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isInitialized() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

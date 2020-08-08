@@ -7,6 +7,11 @@ package claire.hrt.wiki.data.virtual;
  */
 public interface DataTable {
 	
+	void initialize(DataContext context);
+	
+	boolean isInitialized();
+	
+	//TODO: Synchronization?
 	void flush(DataContext context);
 
 }
