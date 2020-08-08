@@ -17,8 +17,8 @@ public final class DataHelper {
 	{
 		char[] chars = new char[bytes.length * 2];
 		for(int i = 0; i < bytes.length; i++) {
-			chars[i / 2 + 0] = HEX[(bytes[i] & 0xF0) >>> 4]; 
-			chars[i / 2 + 1] = HEX[(bytes[i] & 0x0F)]; 
+			chars[i * 2 + 0] = HEX[(bytes[i] & 0xF0) >>> 4]; 
+			chars[i * 2 + 1] = HEX[(bytes[i] & 0x0F)]; 
 		}
 		return new String(chars);
 	}
@@ -44,7 +44,7 @@ public final class DataHelper {
 		if((str.length() & 1) == 1) 
 			throw new PreconditionViolationException("A hex string must have an even number of characters. Consier adding a leading zero.");
 		byte[] nBytes = new byte[str.length() / 2];
-		for(int i = 0; i < str.length(); i++) {
+		for(int i = 0; i < nBytes.length; i++) {
 			byte b = charToNibble(str.charAt(i * 2));
 			b <<= 4;
 			b += charToNibble(str.charAt(i * 2 + 1));
