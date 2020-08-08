@@ -56,13 +56,26 @@ public class UserTableImpl implements UserTable {
 		} catch (InvalidKeySpecException e) { throw new Error(e); }
 		byte[] str = key.getEncoded();
 		salts.put(username, salt);
-		passwords.put(username, toHex(str));
+		passwords.put(username, DataHelper.toHex(str));
 	}
 
 	@Override
-	public boolean read(String username, String password) {
-		// TODO Auto-generated method stub
-		return false;
+	public LoginReturn read(String username, String password) {
+		if(!passwords.containsKey(username)) {
+			return LoginReturn.NO_SUCH_USER;
+		}
+		char[] prekey = (username + password).toCharArray();
+		byte[] salt = salts.get(username);
+		SecretKey key;
+		try {
+			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT));
+		} catch (InvalidKeySpecException e) { throw new Error(e); }
+		byte[] str = key.getEncoded();
+		String calculated = DataHelper.toHex(str);
+		if(passwords.get(username).equals(calculated))
+			return LoginReturn.LOGIN_SUCCESS;
+		else
+			return LoginReturn.NO_SUCH_USER;
 	}
 	
 	private byte[] generateSalt()
