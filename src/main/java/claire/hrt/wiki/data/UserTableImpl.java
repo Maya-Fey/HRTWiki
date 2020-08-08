@@ -15,6 +15,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 import claire.hrt.wiki.data.except.DuplicateKeyException;
+import claire.hrt.wiki.data.except.NoSuchKeyException;
 import claire.hrt.wiki.data.virtual.DataContext;
 import claire.hrt.wiki.data.virtual.UserTable;
 
@@ -43,6 +44,11 @@ public class UserTableImpl implements UserTable {
 			throw new Error(e);
 		}
 	}
+	
+	@Override
+	public boolean exists(String username) {
+		return salts.containsKey(username);
+	}
 
 	@Override
 	public void write(String username, char[] password) throws DuplicateKeyException 
@@ -51,15 +57,16 @@ public class UserTableImpl implements UserTable {
 			throw new DuplicateKeyException();
 		}
 		
-		char[] prekey = DataHelper.addArrs(username.toCharArray(), password);
-		byte[] salt = this.generateSalt();
-		SecretKey key;
-		try {
-			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT));
-		} catch (InvalidKeySpecException e) { throw new Error(e); }
-		byte[] str = key.getEncoded();
-		salts.put(username, salt);
-		passwords.put(username, DataHelper.toHex(str));
+		unprotectedWrite(username, password);
+	}
+	
+	@Override
+	public void overwrite(String username, char[] password) throws NoSuchKeyException {
+		if(!passwords.containsKey(username)) {
+			throw new NoSuchKeyException(username + " is not a valid user in the authentication table");
+		}
+		
+		unprotectedWrite(username, password);
 	}
 
 	@Override
@@ -90,6 +97,19 @@ public class UserTableImpl implements UserTable {
 		return salt;
 	}
 	
+	private void unprotectedWrite(String username, char[] password)
+	{
+		char[] prekey = DataHelper.addArrs(username.toCharArray(), password);
+		byte[] salt = this.generateSalt(); //Generate new salt, no reaason to reuse
+		SecretKey key;
+		try {
+			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT));
+		} catch (InvalidKeySpecException e) { throw new Error(e); }
+		byte[] str = key.getEncoded();
+		salts.put(username, salt);
+		passwords.put(username, DataHelper.toHex(str));
+	}
+	
 	@Override
 	public void flush(DataContext context) {
 		// TODO Auto-generated method stub
@@ -107,5 +127,7 @@ public class UserTableImpl implements UserTable {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
 
 }
