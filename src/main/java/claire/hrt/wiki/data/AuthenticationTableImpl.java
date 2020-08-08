@@ -14,10 +14,12 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 import claire.hrt.wiki.data.except.DuplicateKeyException;
 import claire.hrt.wiki.data.except.NoSuchKeyException;
-import claire.hrt.wiki.data.virtual.DataContext;
 import claire.hrt.wiki.data.virtual.AuthenticationTable;
+import claire.hrt.wiki.data.virtual.DataContext;
 
 /**
  * @author Claire
