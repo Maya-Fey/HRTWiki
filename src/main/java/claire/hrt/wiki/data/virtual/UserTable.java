@@ -9,7 +9,7 @@ import claire.hrt.wiki.data.LoginReturn;
  */
 public interface UserTable extends DataTable {
 	
-	void write(String username, String password);
-	LoginReturn read(String username, String password);
+	void write(String username, char[] password);
+	LoginReturn read(String username, char[] password);
 
 }

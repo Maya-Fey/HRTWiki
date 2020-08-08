@@ -25,7 +25,7 @@ public final class TestDataHelper {
 		Random rand = new Random();
 		byte[] bytes = new byte[256];
 		rand.nextBytes(bytes);
-		String hex = DataHelper.toHex(bytes);
+		char[] hex = DataHelper.toHex(bytes);
 		byte[] bytes2 = DataHelper.fromHex(hex);
 		assertTrue(Arrays.equals(bytes, bytes2));
 	}
@@ -41,8 +41,8 @@ public final class TestDataHelper {
 		byte[] bytes = new byte[256];
 		for(int i = 0; i < bytes.length; i++)
 			bytes[i] = (byte) i;
-		String s = DataHelper.toHex(bytes);
-		assertEquals(ALL_POSSIBLE, s);
+		char[] s = DataHelper.toHex(bytes);
+		assertEquals(ALL_POSSIBLE, new String(s));
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public final class TestDataHelper {
 		byte[] bytes = new byte[256];
 		for(int i = 0; i < bytes.length; i++)
 			bytes[i] = (byte) i;
-		byte[] bytes2 = DataHelper.fromHex(ALL_POSSIBLE);
+		byte[] bytes2 = DataHelper.fromHex(ALL_POSSIBLE.toCharArray());
 		assertTrue(Arrays.equals(bytes, bytes2));
 	}
 

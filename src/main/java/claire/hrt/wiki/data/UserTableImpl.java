@@ -6,6 +6,7 @@ package claire.hrt.wiki.data;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +28,7 @@ public class UserTableImpl implements UserTable {
 	private final SecureRandom random;
 	
 	private final Map<String, byte[]> salts = new HashMap<>();
-	private final Map<String, String> passwords = new HashMap<>();
+	private final Map<String, char[]> passwords = new HashMap<>();
 	
 	
 	private final SecretKeyFactory factory;
@@ -43,12 +44,12 @@ public class UserTableImpl implements UserTable {
 	}
 
 	@Override
-	public void write(String username, String password) 
+	public void write(String username, char[] password) 
 	{
 		if(passwords.containsKey(username)) {
 			//DuplicateKeyException
 		}
-		char[] prekey = (username + password).toCharArray();
+		char[] prekey = DataHelper.addArrs(username.toCharArray(), password);
 		byte[] salt = this.generateSalt();
 		SecretKey key;
 		try {
@@ -60,19 +61,19 @@ public class UserTableImpl implements UserTable {
 	}
 
 	@Override
-	public LoginReturn read(String username, String password) {
+	public LoginReturn read(String username, char[] password) {
 		if(!passwords.containsKey(username)) {
 			return LoginReturn.NO_SUCH_USER;
 		}
-		char[] prekey = (username + password).toCharArray();
+		char[] prekey = DataHelper.addArrs(username.toCharArray(), password);
 		byte[] salt = salts.get(username);
 		SecretKey key;
 		try {
 			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT));
 		} catch (InvalidKeySpecException e) { throw new Error(e); }
 		byte[] str = key.getEncoded();
-		String calculated = DataHelper.toHex(str);
-		if(passwords.get(username).equals(calculated))
+		char[] calculated = DataHelper.toHex(str);
+		if(Arrays.equals(passwords.get(username), calculated))
 			return LoginReturn.LOGIN_SUCCESS;
 		else
 			return LoginReturn.NO_SUCH_USER;
