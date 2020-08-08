@@ -17,12 +17,12 @@ import javax.crypto.spec.PBEKeySpec;
 import claire.hrt.wiki.data.except.DuplicateKeyException;
 import claire.hrt.wiki.data.except.NoSuchKeyException;
 import claire.hrt.wiki.data.virtual.DataContext;
-import claire.hrt.wiki.data.virtual.UserTable;
+import claire.hrt.wiki.data.virtual.AuthenticationTable;
 
 /**
  * @author Claire
  */
-public class UserTableImpl implements UserTable {
+public class AuthenticationTableImpl implements AuthenticationTable {
 	
 	private static final int ITERATION_COUNT = 10000;
 	private static final int SALT_SIZE = 8;
@@ -35,7 +35,7 @@ public class UserTableImpl implements UserTable {
 	
 	private final SecretKeyFactory factory;
 	
-	public UserTableImpl()
+	public AuthenticationTableImpl()
 	{
 		try {
 			this.factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");

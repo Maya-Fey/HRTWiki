@@ -9,7 +9,7 @@ import claire.hrt.wiki.data.except.NoSuchKeyException;
  * 
  * @author Claire
  */
-public interface UserTable extends DataTable {
+public interface AuthenticationTable extends DataTable {
 	
 	boolean exists(String username);
 	void write(String username, char[] password) throws DuplicateKeyException;
