@@ -14,6 +14,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+import claire.hrt.wiki.data.except.DuplicateKeyException;
 import claire.hrt.wiki.data.virtual.DataContext;
 import claire.hrt.wiki.data.virtual.UserTable;
 
@@ -44,11 +45,12 @@ public class UserTableImpl implements UserTable {
 	}
 
 	@Override
-	public void write(String username, char[] password) 
+	public void write(String username, char[] password) throws DuplicateKeyException 
 	{
 		if(passwords.containsKey(username)) {
-			//DuplicateKeyException
+			throw new DuplicateKeyException();
 		}
+		
 		char[] prekey = DataHelper.addArrs(username.toCharArray(), password);
 		byte[] salt = this.generateSalt();
 		SecretKey key;
@@ -65,6 +67,7 @@ public class UserTableImpl implements UserTable {
 		if(!passwords.containsKey(username)) {
 			return LoginReturn.NO_SUCH_USER;
 		}
+		
 		char[] prekey = DataHelper.addArrs(username.toCharArray(), password);
 		byte[] salt = salts.get(username);
 		SecretKey key;
@@ -73,6 +76,7 @@ public class UserTableImpl implements UserTable {
 		} catch (InvalidKeySpecException e) { throw new Error(e); }
 		byte[] str = key.getEncoded();
 		char[] calculated = DataHelper.toHex(str);
+		
 		if(Arrays.equals(passwords.get(username), calculated))
 			return LoginReturn.LOGIN_SUCCESS;
 		else
