@@ -36,7 +36,8 @@ h2 {
 	overflow: hidden;
 }
 
-nav>a {
+nav>a,
+#personal>a {
 	margin-top: 0.6em;
 	margin-bottom: 0.6em;
 }
@@ -213,4 +214,56 @@ a:hover, a:focus {
 	content: '';
 	display: block;
 	clear: both;
+}
+
+#personal {
+	position: absolute;
+	right: 1em;
+	top: 0.5em;
+	font-size: 75%;
+}
+
+#right-nav {
+	position: absolute;
+	right: 0.5em;
+	top: 2.5em;
+	height: 2.5em;
+	
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+#right-nav form {
+	height: 100%;
+}
+
+#search {
+	height: calc(2em - 2px);
+	margin-top: 0.5em;
+	margin-bottom: 2px;
+	border: 1px solid #a2a9b1;
+	box-sizing: border-box;
+	background-color: white;
+	width: 18em;
+}
+
+#searchterm {
+	border: 0px;
+	vertical-align: middle;
+	width: 18.5em;
+}
+
+#searchsubmit {
+	background: url("search.svg");
+	background-size: 1em;
+	background-position: center;
+	color: transparent;
+	border: 0px;
+	height: 1.8em;
+	width: 1.8em;
+	opacity: 0.5;
+	background-repeat: no-repeat;
+	padding: 0;
+	vertical-align: middle;
 }
