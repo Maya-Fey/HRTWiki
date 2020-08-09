@@ -3,7 +3,7 @@
  */
 package claire.hrt.wiki.data;
 
-import claire.hrt.wiki.commons.PreconditionViolationException;
+import claire.hrt.wiki.commons.except.PreconditionViolationException;
 
 /**
  * Helper class for converting between raw datatypes

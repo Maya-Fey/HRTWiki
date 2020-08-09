@@ -5,6 +5,10 @@ import java.util.function.Function;
 
 import org.eclipse.jdt.annotation.Nullable;
 
+import claire.hrt.wiki.commons.except.InvariantViolationException;
+import claire.hrt.wiki.commons.except.PostconditionViolationException;
+import claire.hrt.wiki.commons.except.PreconditionViolationException;
+
 public enum Condition {
 	
 	PRE((s) -> { return new PreconditionViolationException(s); }), 

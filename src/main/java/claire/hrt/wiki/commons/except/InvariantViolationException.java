@@ -1,4 +1,4 @@
-package claire.hrt.wiki.commons;
+package claire.hrt.wiki.commons.except;
 
 public class InvariantViolationException extends Error {
 

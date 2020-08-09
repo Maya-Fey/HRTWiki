@@ -6,6 +6,8 @@ package claire.hrt.wiki.commons;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
+import claire.hrt.wiki.commons.except.PreconditionViolationException;
+
 /**
  * @author Claire
  *
