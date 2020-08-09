@@ -3,6 +3,10 @@
  */
 package claire.hrt.wiki.data;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -29,11 +33,12 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 	private static final int SALT_SIZE = 8;
 	
 	private final SecureRandom random;
+	private final SecretKeyFactory factory;
 	
 	private final Map<String, byte[]> salts = new HashMap<>();
 	private final Map<String, char[]> passwords = new HashMap<>();
 	
-	private final SecretKeyFactory factory;
+	private boolean initialized = false;
 	
 	/**
 	 * Instantiates with the relevant crypto objects
@@ -113,23 +118,35 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 	}
 	
 	@Override
-	public void flush(DataContext context) {
-		// TODO Auto-generated method stub
-
+	public void flush(DataContext context) throws IOException 
+	{
+		try(PrintWriter writer = new PrintWriter(context.getWriteStream("userdata", "auth.dat")))
+		{
+			for(String username : this.salts.keySet()) {
+				writer.println(username + "||" + new String(DataHelper.toHex(this.salts.get(username))) + "||" + new String(this.passwords.get(username)));
+			}
+		}
 	}
 
 	@Override
-	public void initialize(DataContext context) {
-		// TODO Auto-generated method stub
-		
+	public void initialize(DataContext context) throws IOException
+	{
+		try(BufferedReader reader2 = new BufferedReader(new InputStreamReader(context.getReadStream("", ""))))
+		{
+			reader2.lines().forEach((s) -> {
+				String[] split = s.split("\\|\\|");
+				byte[] salt = DataHelper.fromHex(Null.nonNull(split[1].toCharArray()));
+				char[] password = Null.nonNull(split[2].toCharArray());
+				this.salts.put(Null.nonNull(split[0]), salt);
+				this.passwords.put(Null.nonNull(split[0]), password);
+			});
+		}
 	}
 
 	@Override
-	public boolean isInitialized() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isInitialized() 
+	{
+		return this.initialized;
 	}
-
-	
 
 }
