@@ -15,6 +15,12 @@ import claire.hrt.wiki.commons.except.PreconditionViolationException;
  */
 public class Null {
 	
+	/**
+	 * @param <T> The type of t
+	 * @param t The object you want to assert as not null
+	 * @return The object, unmodified
+	 * @throws PreconditionViolationException if t is null
+	 */
 	@NonNull
 	public static <T> T nonNull(@Nullable T t)
 	{
