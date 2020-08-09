@@ -14,8 +14,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-import org.eclipse.jdt.annotation.NonNull;
-
+import claire.hrt.wiki.commons.Null;
 import claire.hrt.wiki.data.except.DuplicateKeyException;
 import claire.hrt.wiki.data.except.NoSuchKeyException;
 import claire.hrt.wiki.data.virtual.AuthenticationTable;
@@ -40,8 +39,8 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 	public AuthenticationTableImpl()
 	{
 		try {
-			this.factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-			this.random = SecureRandom.getInstance("SHA1PRNG");
+			this.factory = Null.nonNull(SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1"));
+			this.random = Null.nonNull(SecureRandom.getInstance("SHA1PRNG"));
 		} catch (NoSuchAlgorithmException e) {
 			throw new Error(e);
 		}
@@ -83,7 +82,7 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 		try {
 			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT));
 		} catch (InvalidKeySpecException e) { throw new Error(e); }
-		byte[] str = key.getEncoded();
+		byte[] str = Null.nonNull(key.getEncoded());
 		char[] calculated = DataHelper.toHex(str);
 		
 		if(Arrays.equals(passwords.get(username), calculated))
@@ -107,7 +106,7 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 		try {
 			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT));
 		} catch (InvalidKeySpecException e) { throw new Error(e); }
-		byte[] str = key.getEncoded();
+		byte[] str = Null.nonNull(key.getEncoded());
 		salts.put(username, salt);
 		passwords.put(username, DataHelper.toHex(str));
 	}
