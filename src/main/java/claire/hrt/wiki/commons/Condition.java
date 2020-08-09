@@ -3,6 +3,8 @@ package claire.hrt.wiki.commons;
 import java.util.Collection;
 import java.util.function.Function;
 
+import org.eclipse.jdt.annotation.Nullable;
+
 public enum Condition {
 	
 	PRE((s) -> { return new PreconditionViolationException(s); }), 
@@ -22,7 +24,7 @@ public enum Condition {
 	 * @param name The name of the object
 	 * @param o the object
 	 */
-	public void nonNull(String name, Object o)
+	public void nonNull(String name, @Nullable Object o)
 	{
 		if(o == null) {
 			throw this.function.apply("Object " + name + " was null, non-null expected.");
