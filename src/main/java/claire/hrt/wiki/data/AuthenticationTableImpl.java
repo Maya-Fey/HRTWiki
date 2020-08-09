@@ -33,9 +33,11 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 	private final Map<String, byte[]> salts = new HashMap<>();
 	private final Map<String, char[]> passwords = new HashMap<>();
 	
-	
 	private final SecretKeyFactory factory;
 	
+	/**
+	 * Instantiates with the relevant crypto objects
+	 */
 	public AuthenticationTableImpl()
 	{
 		try {
@@ -48,13 +50,13 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 	
 	@Override
 	public boolean exists(String username) {
-		return salts.containsKey(username);
+		return this.salts.containsKey(username);
 	}
 
 	@Override
 	public void write(String username, char[] password) throws DuplicateKeyException 
 	{
-		if(passwords.containsKey(username)) {
+		if(this.passwords.containsKey(username)) {
 			throw new DuplicateKeyException();
 		}
 		
@@ -63,7 +65,7 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 	
 	@Override
 	public void overwrite(String username, char[] password) throws NoSuchKeyException {
-		if(!passwords.containsKey(username)) {
+		if(!this.passwords.containsKey(username)) {
 			throw new NoSuchKeyException(username + " is not a valid user in the authentication table");
 		}
 		
@@ -72,12 +74,12 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 
 	@Override
 	public LoginReturn read(String username, char[] password) {
-		if(!passwords.containsKey(username)) {
+		if(!this.passwords.containsKey(username)) {
 			return LoginReturn.NO_SUCH_USER;
 		}
 		
 		char[] prekey = DataHelper.addArrs(username.toCharArray(), password);
-		byte[] salt = salts.get(username);
+		byte[] salt = this.salts.get(username);
 		SecretKey key;
 		try {
 			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT));
@@ -85,16 +87,15 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 		byte[] str = Null.nonNull(key.getEncoded());
 		char[] calculated = DataHelper.toHex(str);
 		
-		if(Arrays.equals(passwords.get(username), calculated))
+		if(Arrays.equals(this.passwords.get(username), calculated))
 			return LoginReturn.LOGIN_SUCCESS;
-		else
-			return LoginReturn.NO_SUCH_USER;
+		return LoginReturn.NO_SUCH_USER;
 	}
 	
 	private byte[] generateSalt()
 	{
 		byte[] salt = new byte[SALT_SIZE];
-		random.nextBytes(salt);
+		this.random.nextBytes(salt);
 		return salt;
 	}
 	
@@ -107,8 +108,8 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT));
 		} catch (InvalidKeySpecException e) { throw new Error(e); }
 		byte[] str = Null.nonNull(key.getEncoded());
-		salts.put(username, salt);
-		passwords.put(username, DataHelper.toHex(str));
+		this.salts.put(username, salt);
+		this.passwords.put(username, DataHelper.toHex(str));
 	}
 	
 	@Override
