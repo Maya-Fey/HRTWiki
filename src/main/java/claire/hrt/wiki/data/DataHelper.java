@@ -12,7 +12,14 @@ import claire.hrt.wiki.commons.except.PreconditionViolationException;
  */
 public final class DataHelper {
 	
-	public static final char[] HEX = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+	private static final char[] HEX = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+	
+	/**
+	 * Converts a series of bytes into hexademical representation 
+	 * @param bytes The byte array to convert
+	 * @return An array of chars, each representing one nibble/hexadecimal character. Hex
+	 * will be in upper case [0-9A-F]
+	 */
 	public static final char[] toHex(byte[] bytes)
 	{
 		char[] chars = new char[bytes.length * 2];
@@ -39,6 +46,11 @@ public final class DataHelper {
 			throw new PreconditionViolationException("Hexadecimal characters are between 0-9, A-F, or a-f");
 	}
 	
+	/**
+	 * Converts a hexadecimal string into bytes
+	 * @param str The hexadecimal string as an array of characters, in any case
+	 * @return An array of bytes
+	 */
 	public static final byte[] fromHex(char[] str)
 	{
 		if((str.length & 1) == 1) 
@@ -53,6 +65,14 @@ public final class DataHelper {
 		return nBytes;
 	}
 	
+	/**
+	 * Adds an array of character arrays into one array, in order, with all
+	 * elements copied
+	 * 
+	 * @param arrs The array of arrays
+	 * @return One array containing the union of all the arrays, with the elements
+	 * in the order of the sub-arrays in the order that the sub-arrays were passed
+	 */
 	public static final char[] addArrs(char[] ... arrs) {
 		int tl = 0;
 		for(char[] arr : arrs)
