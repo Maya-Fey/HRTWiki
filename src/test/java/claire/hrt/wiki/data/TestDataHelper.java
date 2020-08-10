@@ -11,6 +11,8 @@ import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
+import claire.hrt.wiki.commons.Null;
+
 /**
  * @author Claire
  */
@@ -19,6 +21,7 @@ public final class TestDataHelper {
 	/**
 	 * Tests that the hex converter is reversible
 	 */
+	@SuppressWarnings("static-method")
 	@Test
 	public void testHexConversionReversability()
 	{
@@ -35,6 +38,7 @@ public final class TestDataHelper {
 	/**
 	 * Tests every possible byte conversion
 	 */
+	@SuppressWarnings("static-method")
 	@Test
 	public void testToHex()
 	{
@@ -48,14 +52,45 @@ public final class TestDataHelper {
 	/**
 	 * Tests every possible byte conversion
 	 */
+	@SuppressWarnings("static-method")
 	@Test
 	public void testFromHex()
 	{
 		byte[] bytes = new byte[256];
 		for(int i = 0; i < bytes.length; i++)
 			bytes[i] = (byte) i;
-		byte[] bytes2 = DataHelper.fromHex(ALL_POSSIBLE.toCharArray());
+		byte[] bytes2 = DataHelper.fromHex(Null.nonNull(ALL_POSSIBLE.toCharArray()));
 		assertTrue(Arrays.equals(bytes, bytes2));
+	}
+	
+	/**
+	 * Tests every possible byte conversion in lowercase
+	 */
+	@SuppressWarnings("static-method")
+	@Test
+	public void testFromHexLowercase()
+	{
+		byte[] bytes = new byte[256];
+		for(int i = 0; i < bytes.length; i++)
+			bytes[i] = (byte) i;
+		byte[] bytes2 = DataHelper.fromHex(Null.nonNull(ALL_POSSIBLE.toLowerCase().toCharArray()));
+		assertTrue(Arrays.equals(bytes, bytes2));
+	}
+	
+	/**
+	 * Test array combining
+	 */
+	@SuppressWarnings("static-method")
+	@Test
+	public void testCombine()
+	{
+		String[] split = ALL_POSSIBLE.split("1");
+		for(int i = 1; i < split.length; i++)
+			split[i] = "1" + split[i];
+		char[][] arrs = new char[split.length][];
+		for(int i = 0; i < split.length; i++)
+			arrs[i] = split[i].toCharArray();
+		assertEquals(ALL_POSSIBLE, new String(DataHelper.addArrs(arrs)));
 	}
 
 }
