@@ -87,14 +87,14 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 		byte[] salt = this.salts.get(username);
 		SecretKey key;
 		try {
-			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT));
+			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT, 256));
 		} catch (InvalidKeySpecException e) { throw new Error(e); }
 		byte[] str = Null.nonNull(key.getEncoded());
 		char[] calculated = DataHelper.toHex(str);
 		
 		if(Arrays.equals(this.passwords.get(username), calculated))
 			return LoginReturn.LOGIN_SUCCESS;
-		return LoginReturn.NO_SUCH_USER;
+		return LoginReturn.INVALID_PASSWORD;
 	}
 	
 	private byte[] generateSalt()
@@ -110,7 +110,7 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 		byte[] salt = this.generateSalt(); //Generate new salt, no reaason to reuse
 		SecretKey key;
 		try {
-			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT));
+			key = this.factory.generateSecret(new PBEKeySpec(prekey, salt, ITERATION_COUNT, 256));
 		} catch (InvalidKeySpecException e) { throw new Error(e); }
 		byte[] str = Null.nonNull(key.getEncoded());
 		this.salts.put(username, salt);
