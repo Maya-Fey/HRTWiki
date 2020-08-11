@@ -20,7 +20,12 @@ public enum UserRole {
 	/**
 	 * Can edit pages
 	 */
-	EDITOR(1000);
+	EDITOR(1000),
+	
+	/**
+	 * Banned
+	 */
+	BANNED(Integer.MIN_VALUE);
 	
 	/**
 	 * The raw permission value of this role
