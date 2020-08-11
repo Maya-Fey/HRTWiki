@@ -18,6 +18,16 @@ public interface AuthenticationTable extends DataTable {
 	boolean exists(String username);
 	
 	/**
+	 * Writes a new user to the authentication table using a raw password.
+	 * 
+	 * @param username A username that does not already exist
+	 * @param salt The salt to go with the username
+	 * @param password A password as a 256-bit PBKDF2 value
+	 * @throws DuplicateKeyException If the given username already exists in the table
+	 */
+	void writeRaw(String username, byte[] salt, char[] password) throws DuplicateKeyException;
+	
+	/**
 	 * Writes a new user to the authentication table
 	 * 
 	 * @param username A username that does not already exist

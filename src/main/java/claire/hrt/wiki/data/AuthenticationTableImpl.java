@@ -46,7 +46,7 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 	public AuthenticationTableImpl()
 	{
 		try {
-			this.factory = Null.nonNull(SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1"));
+			this.factory = Null.nonNull(SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256"));
 			this.random = Null.nonNull(SecureRandom.getInstance("SHA1PRNG"));
 		} catch (NoSuchAlgorithmException e) {
 			throw new Error(e);
@@ -56,6 +56,16 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 	@Override
 	public boolean exists(String username) {
 		return this.salts.containsKey(username);
+	}
+	
+	@Override
+	public void writeRaw(String username, byte[] salt, char[] password) throws DuplicateKeyException {
+		if(this.passwords.containsKey(username)) {
+			throw new DuplicateKeyException();
+		}
+		
+		this.salts.put(username, salt);
+		this.passwords.put(username, password);		
 	}
 
 	@Override
