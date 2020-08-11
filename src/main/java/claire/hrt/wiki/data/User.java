@@ -88,6 +88,53 @@ public class User {
 	}
 	
 	/**
+	 * Returns this user with a new name
+	 * 
+	 * @param name The new name for this user
+	 * @return This user with the changed name
+	 */
+	public User changeName(String name)
+	{
+		return new User(this.username, name, this.pronouns, this.permissions, this.properties);
+	}
+	
+	/**
+	 * Returns this user with new pronouns
+	 * 
+	 * @param newpronouns The new pronouns for this user
+	 * @return This user with the changed pronouns
+	 */
+	public User changePronouns(String newpronouns)
+	{
+		return new User(this.username, this.displayName, newpronouns, this.permissions, this.properties);
+	}
+	
+	/**
+	 * Returns this user with a new role
+	 * 
+	 * @param role The new role for this user
+	 * @return This user with the changed role
+	 */
+	public User changeRole(UserRole role)
+	{
+		return new User(this.username, this.displayName, this.pronouns, role, this.properties);
+	}
+	
+	/**
+	 * @param key The property key
+	 * @param value The property value
+	 * @return This user with the property set
+	 */
+	public User setProperty(String key, String value)
+	{
+		if(!PROPERTY_DEFAULTS.containsKey(key))
+			throw new PreconditionViolationException("No default defined for " + key);
+		Map<String, String> nproperties = new HashMap<>(this.properties);
+		nproperties.put(key, value);
+		return new User(this.username, this.displayName, this.pronouns, this.permissions, nproperties);
+	}
+	
+	/**
 	 * @param propertyName
 	 * @return The value of the property for this user, or the default if it is unset
 	 */
