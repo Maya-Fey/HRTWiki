@@ -3,6 +3,10 @@
  */
 package claire.hrt.wiki.data;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import claire.hrt.wiki.commons.Null;
 import claire.hrt.wiki.commons.except.PreconditionViolationException;
 
 /**
@@ -84,6 +88,83 @@ public final class DataHelper {
 			i += arrs[j].length;
 		}
 		return narr;
+	}
+	
+	/**
+	 * @param string The string to escape
+	 * @return A string with all the \ and , characters escaped
+	 */
+	public static String escapeForMap(String string)
+	{
+		StringBuilder builder = new StringBuilder("");
+		for(int i = 0; i < string.length(); i++)
+		{
+			if(string.charAt(i) == ',' || string.charAt(i) == '\\' || string.charAt(i) == '=')
+				builder.append('\\');
+			builder.append(string.charAt(i));
+		}
+		return Null.nonNull(builder.toString());
+	}
+	
+	/**
+	 * @param string The string to unescape
+	 * @return A string with all the escape slashes removed
+	 */
+	public static String unescapeForMap(String string)
+	{
+		StringBuilder builder = new StringBuilder("");
+		boolean escaped = false;
+		for(int i = 0; i < string.length(); i++)
+		{
+			if(escaped) {
+				builder.append(string.charAt(i));
+				escaped = false;
+			} else if(string.charAt(i) == '\\') {
+				escaped = true;
+			} else {
+				builder.append(string.charAt(i));
+			}
+		}
+		return Null.nonNull(builder.toString());
+	}
+	
+	/**
+	 * @param map A map from String => String
+	 * @return A string representation of the map
+	 */
+	public static String mapToString(Map<String, String> map)
+	{
+		StringBuilder builder = new StringBuilder("{ ");
+		map.entrySet().forEach((e) -> {
+			builder.append('"');
+			builder.append(escapeForMap(e.getKey()));
+			builder.append("\" => \"");
+			builder.append(escapeForMap(e.getValue()));
+			builder.append("\", ");
+		});
+		builder.append(" }");
+		return Null.nonNull(builder.toString());
+	}
+	
+	/**
+	 * @param string A string representing a map
+	 * @return A map that the string represents
+	 */
+	public static Map<String, String> mapFromString(String string)
+	{
+		Map<String, String> map = new HashMap<>();
+		String[] components = string.split("(?<=([^\\\\]))(\\\\\\\\)*,");
+		for(String component : components) {
+			String[] pair = component.split(" => ");
+			if(pair.length != 2)
+				continue;
+			pair[0] = pair[0].substring(pair[0].indexOf('"') + 1);
+			pair[1] = pair[1].substring(pair[1].indexOf('"') + 1);
+			pair[0] = pair[0].substring(0, pair[0].lastIndexOf('"'));
+			pair[1] = pair[1].substring(0, pair[1].lastIndexOf('"'));
+			map.put(unescapeForMap(Null.nonNull(pair[0])), unescapeForMap(Null.nonNull(pair[1])));
+		}
+		return map;
 	}
 
 }
