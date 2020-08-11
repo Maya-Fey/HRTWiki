@@ -6,6 +6,7 @@ package claire.hrt.wiki.data;
 import java.util.HashMap;
 import java.util.Map;
 
+import claire.hrt.wiki.commons.Null;
 import claire.hrt.wiki.commons.except.PreconditionViolationException;
 import claire.hrt.wiki.data.enumerate.UserRole;
 
@@ -30,6 +31,19 @@ public class User {
 	private final UserRole permissions;
 	
 	private final Map<String, String> properties;
+	
+	/**
+	 * @param persisted
+	 */
+	User(String persisted)
+	{
+		Map<String, String> reconstituted = DataHelper.mapFromString(persisted);
+		this.username = reconstituted.get("username");
+		this.displayName = reconstituted.get("displayName");
+		this.pronouns = reconstituted.get("pronouns");
+		this.permissions = UserRole.fromInt(Integer.parseInt(reconstituted.get("permissions")));
+		this.properties = DataHelper.mapFromString(reconstituted.get("properties"));
+	}
 	
 	/**
 	 * @param username
@@ -145,6 +159,20 @@ public class User {
 		if(this.properties.containsKey(propertyName))
 			return this.properties.get(propertyName);
 		return PROPERTY_DEFAULTS.get(propertyName);
+	}
+	
+	/**
+	 * @return A string representation of this object capable of resurrecting it
+	 */
+	public String persist()
+	{
+		Map<String, String> map = new HashMap<>();
+		map.put("username", this.username);
+		map.put("displayName", this.displayName);
+		map.put("pronouns", this.pronouns);
+		map.put("permissions", Null.nonNull(Integer.toString(this.permissions.ordinal())));
+		map.put("properties", DataHelper.mapToString(this.properties));
+		return DataHelper.mapToString(map);
 	}
 
 }
