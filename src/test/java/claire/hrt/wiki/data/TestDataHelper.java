@@ -112,5 +112,27 @@ public final class TestDataHelper {
 		Map<String, String> reconstituted = DataHelper.mapFromString(stringrep);
 		assertEquals(map, reconstituted);
 	}
+	
+	/**
+	 * Test conversion of maps to strings and back on nested maps
+	 */
+	@SuppressWarnings("static-method")
+	@Test
+	public void testNestedMapPersist()
+	{
+		Map<String, String> map = new HashMap<>();
+		map.put("isGay", "true");
+		map.put("containsComma", "true,");
+		map.put("containsEscape", "true\\");
+		map.put("containsEscapedComma", "true\\,");
+		map.put("containsEquals", "=true");
+		String stringrep = DataHelper.mapToString(map);
+		Map<String, String> map2 = new HashMap<>();
+		map2.put(stringrep, stringrep);
+		map2.put("Hello", stringrep);
+		String stringrep2 = DataHelper.mapToString(map2);
+		Map<String, String> reconstituted = DataHelper.mapFromString(stringrep2);
+		assertEquals(map, DataHelper.mapFromString(reconstituted.get("Hello")));
+	}
 
 }
