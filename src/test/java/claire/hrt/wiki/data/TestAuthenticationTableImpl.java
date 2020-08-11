@@ -15,6 +15,7 @@ import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 
 import claire.hrt.wiki.commons.Null;
+import claire.hrt.wiki.data.enumerate.LoginReturn;
 import claire.hrt.wiki.data.except.DuplicateKeyException;
 import claire.hrt.wiki.data.except.NoSuchKeyException;
 import claire.hrt.wiki.data.virtual.AuthenticationTable;

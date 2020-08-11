@@ -1,4 +1,4 @@
-package claire.hrt.wiki.data;
+package claire.hrt.wiki.data.enumerate;
 
 /**
  * The return for a login operation

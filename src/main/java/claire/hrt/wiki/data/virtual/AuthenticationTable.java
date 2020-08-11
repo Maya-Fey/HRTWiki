@@ -1,6 +1,6 @@
 package claire.hrt.wiki.data.virtual;
 
-import claire.hrt.wiki.data.LoginReturn;
+import claire.hrt.wiki.data.enumerate.LoginReturn;
 import claire.hrt.wiki.data.except.DuplicateKeyException;
 import claire.hrt.wiki.data.except.NoSuchKeyException;
 
