@@ -132,4 +132,18 @@ public class TestAuthenticationTableImpl {
 		}
 	}
 	
+	/**
+	 * Test that verifies the functionality of raw write
+	 */
+	@SuppressWarnings("static-method")
+	@Test
+	public void testRawWrite()
+	{
+		AuthenticationTable auth = new AuthenticationTableImpl();
+		try {
+			auth.writeRaw("Claire", DataHelper.fromHex(Null.nonNull("DD155F0BF882A3E3".toCharArray())), Null.nonNull("7407DD1A011FCF9AECA395F1B218795424C76129336580FB7FF2355684BAED34".toCharArray()));
+		} catch (DuplicateKeyException e) { fail(e); }
+		assertEquals(LoginReturn.LOGIN_SUCCESS, auth.read("Claire", Null.nonNull("clairespassword".toCharArray())));
+	}
+	
 }
