@@ -1,5 +1,7 @@
 package claire.hrt.wiki.data.enumerate;
 
+import claire.hrt.wiki.commons.Null;
+
 /**
  * The role of a user, which specifies their permission level
  * 
@@ -44,6 +46,16 @@ public enum UserRole {
 	public boolean hasAtLeast(UserRole role)
 	{
 		return this.permissionLevel >= role.permissionLevel;
+	}
+	
+	private static final UserRole[] roles = UserRole.values();
+	/**
+	 * @param i A UserRole ordinal
+	 * @return The UserRole represented by the ordinal
+	 */
+	public static UserRole fromInt(int i)
+	{
+		return Null.nonNull(roles[i]);
 	}
 	
 }
