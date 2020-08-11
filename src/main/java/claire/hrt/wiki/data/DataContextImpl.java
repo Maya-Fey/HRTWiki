@@ -47,6 +47,8 @@ public class DataContextImpl implements DataContext {
 
 	@Override
 	public FileInputStream getReadStream(String domain, String name) throws IOException {
+		File dir = new File(this.rootPath + "/" + domain);
+		if(!dir.exists()) dir.mkdir();
 		File file = new File(this.rootPath + "/" + domain + "/" + name);
 		if(!file.exists()) file.createNewFile();
 		return new FileInputStream(file);
@@ -54,6 +56,8 @@ public class DataContextImpl implements DataContext {
 
 	@Override
 	public FileOutputStream getWriteStream(String domain, String name) throws IOException {
+		File dir = new File(this.rootPath + "/" + domain);
+		if(!dir.exists()) dir.mkdir();
 		File file = new File(this.rootPath + "/" + domain + "/" + name);
 		if(!file.exists()) file.createNewFile();
 		return new FileOutputStream(file);
