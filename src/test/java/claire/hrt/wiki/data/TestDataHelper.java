@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import org.junit.jupiter.api.Test;
@@ -91,6 +93,24 @@ public final class TestDataHelper {
 		for(int i = 0; i < split.length; i++)
 			arrs[i] = split[i].toCharArray();
 		assertEquals(ALL_POSSIBLE, new String(DataHelper.addArrs(arrs)));
+	}
+	
+	/**
+	 * Test conversion of maps to strings and back
+	 */
+	@SuppressWarnings("static-method")
+	@Test
+	public void testMapPersist()
+	{
+		Map<String, String> map = new HashMap<>();
+		map.put("isGay", "true");
+		map.put("containsComma", "true,");
+		map.put("containsEscape", "true\\");
+		map.put("containsEscapedComma", "true\\,");
+		map.put("containsEquals", "=true");
+		String stringrep = DataHelper.mapToString(map);
+		Map<String, String> reconstituted = DataHelper.mapFromString(stringrep);
+		assertEquals(map, reconstituted);
 	}
 
 }
