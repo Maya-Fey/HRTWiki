@@ -131,7 +131,7 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 	@Override
 	public void initialize(DataContext context) throws IOException
 	{
-		try(BufferedReader reader2 = new BufferedReader(new InputStreamReader(context.getReadStream("", ""))))
+		try(BufferedReader reader2 = new BufferedReader(new InputStreamReader(context.getReadStream("userdata", "auth.dat"))))
 		{
 			reader2.lines().forEach((s) -> {
 				String[] split = s.split("\\|\\|");
@@ -141,6 +141,7 @@ public class AuthenticationTableImpl implements AuthenticationTable {
 				this.passwords.put(Null.nonNull(split[0]), password);
 			});
 		}
+		this.initialized = true;
 	}
 
 	@Override
