@@ -6,6 +6,8 @@ package claire.hrt.wiki.data;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.jdt.annotation.Nullable;
+
 import claire.hrt.wiki.commons.Null;
 import claire.hrt.wiki.commons.except.PreconditionViolationException;
 import claire.hrt.wiki.data.enumerate.UserRole;
@@ -20,7 +22,7 @@ public class User {
 	private static final Map<String, String> PROPERTY_DEFAULTS = new HashMap<>();
 	
 	static {
-		//Default properties go here
+		PROPERTY_DEFAULTS.put("testproperty", "test");
 	}
 	
 	private final String username;
@@ -173,6 +175,48 @@ public class User {
 		map.put("permissions", Null.nonNull(Integer.toString(this.permissions.ordinal())));
 		map.put("properties", DataHelper.mapToString(this.properties));
 		return DataHelper.mapToString(map);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + this.displayName.hashCode();
+		result = prime * result + this.permissions.hashCode();
+		result = prime * result + this.pronouns.hashCode();
+		result = prime * result + this.properties.hashCode();
+		result = prime * result + this.username.hashCode();
+		return result;
+	}
+
+	@Override
+	public boolean equals(@Nullable Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		User other = (User) obj;
+		if(!this.displayName.equals(other.displayName)) {
+			return false;
+		}
+		if(this.permissions != other.permissions) {
+			return false;
+		}
+		if(!this.pronouns.equals(other.pronouns)) {
+			return false;
+		}
+		if(!this.properties.equals(other.properties)) {
+			return false;
+		}
+		if(!this.username.equals(other.username)) {
+			return false;
+		}
+		return true;
 	}
 
 }
