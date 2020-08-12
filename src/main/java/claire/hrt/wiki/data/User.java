@@ -94,14 +94,6 @@ public class User {
 	{
 		return this.permissions;
 	}
-
-	/**
-	 * @return the properties
-	 */
-	public Map<String, String> getProperties() 
-	{
-		return this.properties;
-	}
 	
 	/**
 	 * Returns this user with a new name
