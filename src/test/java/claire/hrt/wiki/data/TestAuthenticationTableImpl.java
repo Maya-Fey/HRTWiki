@@ -120,6 +120,7 @@ public class TestAuthenticationTableImpl {
 					auth.write("Claire2", Null.nonNull("anotherpassword".toCharArray()));
 				} catch (DuplicateKeyException e) { fail(e); }
 				auth.flush(context);
+				auth.flush(context);
 			}
 			{
 				AuthenticationTable auth = new AuthenticationTableImpl();
