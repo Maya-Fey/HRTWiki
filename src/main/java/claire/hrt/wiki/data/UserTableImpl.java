@@ -75,7 +75,7 @@ public class UserTableImpl implements UserTable {
 
 	@Override
 	public void flush(DataContext context) throws IOException {
-		try(PrintWriter writer = new PrintWriter(context.getWriteStream("userdata", "auth.dat")))
+		try(PrintWriter writer = new PrintWriter(context.getWriteStream("userdata", "users.dat")))
 		{
 			for(User user : this.users.values()) {
 				writer.println(user.persist());
