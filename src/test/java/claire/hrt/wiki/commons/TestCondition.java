@@ -1,7 +1,7 @@
 /**
  * 
  */
-package claire.hrt.wiki.data;
+package claire.hrt.wiki.commons;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
