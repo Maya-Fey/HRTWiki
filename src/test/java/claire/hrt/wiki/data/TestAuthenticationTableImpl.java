@@ -9,8 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
 
@@ -110,9 +108,7 @@ public class TestAuthenticationTableImpl {
 	public void testTestSaveLoad()
 	{
 		try {
-			Path file = Files.createTempDirectory("mytemp-");
-			String s = Null.nonNull(file.toFile().getCanonicalPath());
-			DataContext context = new DataContextImpl(s);
+			DataContext context = DataTestHelper.TEST_DATA_CONTEXT;
 			{
 				AuthenticationTable auth = new AuthenticationTableImpl();
 				try {

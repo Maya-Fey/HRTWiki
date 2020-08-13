@@ -9,12 +9,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
 
-import claire.hrt.wiki.commons.Null;
 import claire.hrt.wiki.data.virtual.DataContext;
 
 /**
@@ -30,9 +27,7 @@ public class TestDataContextImpl {
 	public void testFileReadWrite()
 	{
 		try {
-			Path file = Files.createTempDirectory("mytemp-");
-			String s = Null.nonNull(file.toFile().getCanonicalPath());
-			DataContext context = new DataContextImpl(s);
+			DataContext context = DataTestHelper.TEST_DATA_CONTEXT;
 			try(FileOutputStream stream = context.getWriteStream("testpath", "test.file")) {
 				PrintWriter writer = new PrintWriter(stream);
 				writer.println("Hello there");
