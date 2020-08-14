@@ -46,6 +46,8 @@ public final class WebState {
 		} catch (IOException e) {
 			throw new UncheckedIOException(e);
 		}
+		
+		Runtime.getRuntime().addShutdownHook(this.new WebStateShutdownHook());
 	}
 	
 	/**
@@ -76,6 +78,21 @@ public final class WebState {
 			System.out.println("Error: Backup was saved successfully but flush to main memory failed");
 			Runtime.getRuntime().exit(0);
 		}
+	}
+	
+	/**
+	 * A shutdown hook that flushes the web state before JVM shutdown
+	 * 
+	 * @author Claire
+	 */
+	protected final class WebStateShutdownHook extends Thread {
+		
+		@Override
+		public void run()
+		{
+			WebState.this.flush();
+		}
+		
 	}
 	
 }
