@@ -17,9 +17,8 @@ import claire.hrt.wiki.data.except.NoSuchKeyException;
 
 /**
  * @author Claire
- *
  */
-public class AbstractStateServlet extends HttpServlet {
+public abstract class AbstractStateServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = -1031500483249940650L;
 
