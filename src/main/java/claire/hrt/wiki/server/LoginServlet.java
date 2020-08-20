@@ -24,11 +24,19 @@ public class LoginServlet extends AbstractStateServlet {
 	
 	@Override
     protected void get(HttpServletRequest request, Session session, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+		if(session.isAuthenticated()) {
+			response.sendRedirect("/admin/index.jsp");
+			return;
+		}
+		request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 	
 	@Override
     protected void post(HttpServletRequest request, Session session, HttpServletResponse response) throws ServletException, IOException {
+		if(session.isAuthenticated()) {
+			response.sendRedirect("/admin/index.jsp");
+			return;
+		}
 		//TODO: IP rate limiting
 		//TODO: Add additional checks
 		if(request.getParameter("username") == null || request.getParameter("password") == null) {
