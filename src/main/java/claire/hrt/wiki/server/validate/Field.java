@@ -38,7 +38,7 @@ public class Field {
 			{
 				String errQ = validator.validate(prop);
 				if(errQ.length() > 0)
-					return errQ;
+					return "Field `" + this.name + "`: " + errQ;
 			}
 		} else if(this.required) {
 			return "Field `" + this.name + "` is required";
