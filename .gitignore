@@ -78,3 +78,5 @@ img_cache/
 # IntelliJ
 .idea/
 *.iml
+
+application_data/
