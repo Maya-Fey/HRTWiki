@@ -43,19 +43,19 @@ public final class WebState {
 		this.users = new UserTableImpl();
 		this.sessions = new SessionTableImpl();
 		
-		if(!this.auth.exists("Claire")) {
-			try {
-				this.auth.writeRaw("Claire", DataHelper.fromHex(Null.nonNull("3401CCE5C89B3441".toCharArray())), Null.nonNull("4F8A7751412159904BD1BB8CA9AF878BB314295CCC35931E39394A496CF5F82C".toCharArray()));
-				this.users.addUser(new User("Claire", "Claire Muriel Fey", "she/her", UserRole.ROOT, new HashMap<>()));
-			} catch (@SuppressWarnings("unused") DuplicateKeyException e1) { /**/ }
-		}
-		
 		try {
 			this.auth.initialize(this.context);
 			this.users.initialize(this.context);
 			this.sessions.initialize(this.context);
 		} catch (IOException e) {
 			throw new UncheckedIOException(e);
+		}
+		
+		if(!this.auth.exists("Claire")) {
+			try {
+				this.auth.writeRaw("Claire", DataHelper.fromHex(Null.nonNull("3401CCE5C89B3441".toCharArray())), Null.nonNull("4F8A7751412159904BD1BB8CA9AF878BB314295CCC35931E39394A496CF5F82C".toCharArray()));
+				this.users.addUser(new User("Claire", "Claire Muriel Fey", "she/her", UserRole.ROOT, new HashMap<>()));
+			} catch (@SuppressWarnings("unused") DuplicateKeyException e1) { /**/ }
 		}
 		
 		Runtime.getRuntime().addShutdownHook(this.new WebStateShutdownHook());
