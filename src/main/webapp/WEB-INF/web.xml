@@ -4,4 +4,13 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
    http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
    
+   <servlet>
+        <servlet-name>ServLogin</servlet-name>
+        <servlet-class>claire.hrt.wiki.server.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServLogin</servlet-name>
+        <url-pattern>/admin/login.jsp</url-pattern>
+    </servlet-mapping>
+   
 </web-app>
