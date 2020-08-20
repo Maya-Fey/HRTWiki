@@ -20,7 +20,7 @@ public class CharacterValidator implements Validator {
 	@Override
 	public String validate(String value) {
 		for(int i = 0; i < value.length(); i++)
-			if(this.allowed.indexOf(value.charAt(i)) != -1)
+			if(this.allowed.indexOf(value.charAt(i)) == -1)
 				return "Illegal character, allowed: `" + this.allowed + "`";
 		return "";
 	}
