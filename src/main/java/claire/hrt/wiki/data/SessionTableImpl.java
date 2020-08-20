@@ -41,9 +41,10 @@ public class SessionTableImpl implements SessionTable {
 		do {
 			this.random.nextBytes(this.buf);
 			deriv = new String(DataHelper.toHex(this.buf));
-			
 		} while(this.activeSessions.containsKey(deriv));
-		return new Session(deriv);
+		Session session = new Session(deriv);
+		this.activeSessions.put(deriv, session);
+		return session;
 	}
 
 	@Override
