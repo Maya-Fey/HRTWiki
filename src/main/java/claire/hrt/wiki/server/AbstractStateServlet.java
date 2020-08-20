@@ -23,7 +23,7 @@ public abstract class AbstractStateServlet extends HttpServlet {
 	private static final long serialVersionUID = -1031500483249940650L;
 
 	@Override
-	protected void doGet(@Nullable HttpServletRequest req, @Nullable HttpServletResponse resp) throws ServletException, IOException
+	protected final void doGet(@Nullable HttpServletRequest req, @Nullable HttpServletResponse resp) throws ServletException, IOException
     {
 		if(req == null || resp == null) 
 			return;
@@ -34,7 +34,7 @@ public abstract class AbstractStateServlet extends HttpServlet {
     }
 	
 	@Override
-	protected void doPost(@Nullable HttpServletRequest req, @Nullable HttpServletResponse resp) throws ServletException, IOException
+	protected final void doPost(@Nullable HttpServletRequest req, @Nullable HttpServletResponse resp) throws ServletException, IOException
     {
 		if(req == null || resp == null) 
 			return;
