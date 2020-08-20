@@ -40,6 +40,8 @@ public class LoginServlet extends AbstractStateServlet {
 			response.sendRedirect("/admin/index.jsp");
 			return;
 		}
+		request.setAttribute("username_allowedchars", USERNAME_ALLOWED);
+		request.setAttribute("password_allowedchars", PASSWORD_ALLOWED);
 		request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 	
