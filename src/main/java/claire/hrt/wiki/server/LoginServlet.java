@@ -13,6 +13,7 @@ import claire.hrt.wiki.commons.Null;
 import claire.hrt.wiki.data.Session;
 import claire.hrt.wiki.data.WebState;
 import claire.hrt.wiki.data.enumerate.LoginReturn;
+import claire.hrt.wiki.data.except.NoSuchKeyException;
 
 /**
  * @author Claire
@@ -38,6 +39,11 @@ public class LoginServlet extends AbstractStateServlet {
         LoginReturn result = WebState.INST.auth.read(Null.nonNull(request.getParameter("username")), Null.nonNull(request.getParameter("password").toCharArray()));
         
         if(result == LoginReturn.LOGIN_SUCCESS) {
+        	try {
+				session.setAuthenticated(WebState.INST.users.getUserByName(Null.nonNull(request.getParameter("username"))), 3600 * 24 * 14);
+			} catch (NoSuchKeyException e) {
+				throw new ServletException(e);
+			}
         	response.sendRedirect("/admin/index.jsp");
         } else if(result == LoginReturn.INVALID_PASSWORD) {
         	request.setAttribute("failure_reason", "Invalid password");
