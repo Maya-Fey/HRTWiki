@@ -12,5 +12,13 @@
         <servlet-name>ServLogin</servlet-name>
         <url-pattern>/admin/login.jsp</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ServAdminIndex</servlet-name>
+        <servlet-class>claire.hrt.wiki.server.AdminIndexServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServAdminIndex</servlet-name>
+        <url-pattern>/admin/index.jsp</url-pattern>
+    </servlet-mapping>
    
 </web-app>
