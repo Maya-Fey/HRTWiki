@@ -6,7 +6,7 @@
    
    <servlet>
         <servlet-name>ServLogin</servlet-name>
-        <servlet-class>claire.hrt.wiki.server.LoginServlet</servlet-class>
+        <servlet-class>claire.hrt.wiki.server.admin.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServLogin</servlet-name>
@@ -14,7 +14,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ServAdminIndex</servlet-name>
-        <servlet-class>claire.hrt.wiki.server.AdminIndexServlet</servlet-class>
+        <servlet-class>claire.hrt.wiki.server.admin.AdminIndexServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServAdminIndex</servlet-name>

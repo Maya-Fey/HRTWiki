@@ -1,7 +1,7 @@
 /**
  * 
  */
-package claire.hrt.wiki.server;
+package claire.hrt.wiki.server.admin;
 
 import java.io.IOException;
 
@@ -14,6 +14,7 @@ import claire.hrt.wiki.data.Session;
 import claire.hrt.wiki.data.WebState;
 import claire.hrt.wiki.data.enumerate.LoginReturn;
 import claire.hrt.wiki.data.except.NoSuchKeyException;
+import claire.hrt.wiki.server.AbstractStateServlet;
 import claire.hrt.wiki.server.validate.CharacterValidator;
 import claire.hrt.wiki.server.validate.Field;
 import claire.hrt.wiki.server.validate.LengthValidator;

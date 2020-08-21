@@ -1,7 +1,7 @@
 /**
  * 
  */
-package claire.hrt.wiki.server;
+package claire.hrt.wiki.server.admin;
 
 import java.io.IOException;
 
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import claire.hrt.wiki.data.Session;
 import claire.hrt.wiki.data.enumerate.UserRole;
+import claire.hrt.wiki.server.AbstractStateServlet;
 
 /**
  * @author Claire
