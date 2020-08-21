@@ -3,7 +3,7 @@
 <html>
 	<body>
 		<div id="sidebar">
-			<jsp:directive.include file="adminsidebar.jsp"/>
+			<jsp:directive.include file="sidebar.jsp"/>
 		</div>
 		<div id="main">
 			<div>

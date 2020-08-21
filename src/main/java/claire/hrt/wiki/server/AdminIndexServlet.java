@@ -25,7 +25,7 @@ public class AdminIndexServlet extends AbstractStateServlet {
 			response.sendRedirect("/admin/login.jsp");
 			return;
 		}
-		request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/admin/index.jsp").forward(request, response);
     }
 
 }
