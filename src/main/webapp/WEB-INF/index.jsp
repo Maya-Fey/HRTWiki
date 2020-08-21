@@ -3,18 +3,7 @@
 <html>
 	<body>
 		<div id="sidebar">
-			<table>
-				<tr>
-					<td>
-						Hello
-					</td>
-				</tr>
-				<tr>
-					<td>
-						There
-					</td>
-				</tr>
-			</table>
+			<jsp:directive.include file="adminsidebar.jsp"/>
 		</div>
 		<div id="main">
 			<div>
