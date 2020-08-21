@@ -22,7 +22,8 @@ import claire.hrt.wiki.data.enumerate.UserRole;
 public class AdminSidebar {
 	
 	private static final Item[] SIDEBAR_ITEMS = {
-		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Home", "/admin/index.jsp")
+		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Home", "/admin/index.jsp"),
+		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Logout", "/admin/logout.jsp")
 	};
 	
 	private static final Map<UserRole, Map<Category, List<Item>>> CACHE = new HashMap<>();

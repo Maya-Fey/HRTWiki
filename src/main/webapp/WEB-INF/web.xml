@@ -20,5 +20,13 @@
         <servlet-name>ServAdminIndex</servlet-name>
         <url-pattern>/admin/index.jsp</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ServLogout</servlet-name>
+        <servlet-class>claire.hrt.wiki.server.admin.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServLogout</servlet-name>
+        <url-pattern>/admin/logout.jsp</url-pattern>
+    </servlet-mapping>
    
 </web-app>
