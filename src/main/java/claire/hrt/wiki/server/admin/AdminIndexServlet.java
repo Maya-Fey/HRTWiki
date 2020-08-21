@@ -26,6 +26,7 @@ public class AdminIndexServlet extends AbstractStateServlet {
 			response.sendRedirect("/admin/login.jsp");
 			return;
 		}
+		request.setAttribute("sidebar", AdminSidebar.getItems(session.getUser().getPermissions()));
 		request.getRequestDispatcher("/WEB-INF/admin/index.jsp").forward(request, response);
     }
 
