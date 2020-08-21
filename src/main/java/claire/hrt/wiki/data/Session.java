@@ -101,6 +101,15 @@ public class Session {
 	}
 	
 	/**
+	 * Removes the authentication on this session
+	 */
+	public void unauthenticate()
+	{
+		this.expiresAfter = -1;
+		this.user = null;
+	}
+	
+	/**
 	 * @param name A property name
 	 * @return Whether or not the name has an associated value.
 	 */
