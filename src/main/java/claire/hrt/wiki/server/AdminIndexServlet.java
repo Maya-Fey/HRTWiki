@@ -21,8 +21,8 @@ public class AdminIndexServlet extends AbstractStateServlet {
 	
 	@Override
     protected void get(HttpServletRequest request, Session session, HttpServletResponse response) throws ServletException, IOException {
-		if(session.isAuthenticated() || !session.getUser().getPermissions().hasAtLeast(UserRole.EDITOR)) {
-			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+		if(!session.isAuthenticated() || !session.getUser().getPermissions().hasAtLeast(UserRole.EDITOR)) {
+			response.sendRedirect("/admin/login.jsp");
 			return;
 		}
 		request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
