@@ -28,5 +28,13 @@
         <servlet-name>ServLogout</servlet-name>
         <url-pattern>/admin/logout.jsp</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminCSS</servlet-name>
+        <servlet-class>claire.hrt.wiki.server.admin.AdminStyleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminCSS</servlet-name>
+        <url-pattern>/admin/admin.css</url-pattern>
+    </servlet-mapping>
    
 </web-app>
