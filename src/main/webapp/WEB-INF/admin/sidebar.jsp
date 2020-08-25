@@ -2,13 +2,13 @@
 			<c:forEach var="category" items="${ sidebar.entrySet() }">
 				<table>
 					<tr>
-						<td>
+						<td class="sidebarcategory">
 							${ category.getKey().toString() }
 						</td>
 					</tr>
 					<c:forEach var="link" items="${ category.getValue() }">
 					<tr>
-						<td>
+						<td class="sidebarentry">
 							<a href="${ link.getPath() }">
 								${ link.getName() }
 							</a>
