@@ -27,8 +27,14 @@ public class LoginServlet extends AbstractStateServlet {
 
 	private static final long serialVersionUID = -6986577362318872849L;
 	
-	private static final String USERNAME_ALLOWED = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-";
-	private static final String PASSWORD_ALLOWED = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()-=_+";
+	/**
+	 * Characters allowed in usernames
+	 */
+	public static final String USERNAME_ALLOWED = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-";
+	/**
+	 * Characters allowed in passwords
+	 */
+	public static final String PASSWORD_ALLOWED = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()-=_+";
 	
 	private static final RequestValidator validator = new RequestValidator(
 				new Field("username", true, new LengthValidator(1, 32), new CharacterValidator(USERNAME_ALLOWED)),

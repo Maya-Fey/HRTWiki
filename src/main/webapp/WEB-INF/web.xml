@@ -21,6 +21,14 @@
         <url-pattern>/admin/index.jsp</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>ServPassword</servlet-name>
+        <servlet-class>claire.hrt.wiki.server.admin.ChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServPassword</servlet-name>
+        <url-pattern>/admin/password.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ServLogout</servlet-name>
         <servlet-class>claire.hrt.wiki.server.admin.LogoutServlet</servlet-class>
     </servlet>

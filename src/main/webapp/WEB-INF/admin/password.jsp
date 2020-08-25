@@ -74,7 +74,7 @@
 					}
 				</script>
 				<form id="changepassword" method="POST" onsubmit="return form_validator(this)" action="/admin/changepassword.jsp">
-					<h2>Login</h2>
+					<h2>Change Password</h2>
 					<c:if test="${failure_reason != null}">
 						<div>
 							${ failure_reason }
