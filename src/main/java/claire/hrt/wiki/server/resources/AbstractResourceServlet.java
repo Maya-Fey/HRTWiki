@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.jdt.annotation.Nullable;
 
+import claire.hrt.wiki.commons.Null;
 import claire.hrt.wiki.data.Session;
 import claire.hrt.wiki.server.AbstractStateServlet;
 
@@ -32,7 +33,7 @@ public abstract class AbstractResourceServlet extends AbstractStateServlet {
 	public AbstractResourceServlet(String path)
 	{
 		byte[] assign = null;
-		try(InputStream is = this.getClass().getResourceAsStream(path)) {
+		try(InputStream is = Null.nonNull(this.getClass().getResourceAsStream(path))) {
 			assign = new byte[is.available()];
 			is.read(assign);
 		} catch(IOException e) {

@@ -17,7 +17,7 @@ public class AdminStyleServlet extends AbstractResourceServlet {
 	 * 
 	 */
 	public AdminStyleServlet() {
-		super("/webresources/admin.css");
+		super("/resources/webresources/admin.css");
 	}
 
 }
