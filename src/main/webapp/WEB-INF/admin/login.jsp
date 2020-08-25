@@ -68,7 +68,7 @@
 		}
 	</script>
 	<body>
-		<form method="POST" onsubmit="return form_validator(this)" action="/admin/login.jsp">
+		<form id="loginform" method="POST" onsubmit="return form_validator(this)" action="/admin/login.jsp">
 			<h2>Login</h2>
 			<c:if test="${failure_reason != null}">
 				<div>
