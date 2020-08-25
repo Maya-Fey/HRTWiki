@@ -30,7 +30,7 @@
 						return true;
 					}
 					
-					function validatePassword(field)
+					function validatePassword(field, validpassword)
 					{
 						if(!containsOnly(field.value, validpassword))
 						{
@@ -60,9 +60,9 @@
 					function form_validator(form) {
 						var validpassword = "${ password_allowedchars }";
 						
-						if(!validatePassword(form.curpassword)) return false;
-						if(!validatePassword(form.password)) return false;
-						if(!validatePassword(form.confirmpassword)) return false;
+						if(!validatePassword(form.curpassword, validpassword)) return false;
+						if(!validatePassword(form.password, validpassword)) return false;
+						if(!validatePassword(form.confirmpassword, validpassword)) return false;
 				
 						if(form.password.value != form.confirmpassword.value)
 						{
@@ -73,7 +73,7 @@
 						return true;
 					}
 				</script>
-				<form id="changepassword" method="POST" onsubmit="return form_validator(this)" action="/admin/changepassword.jsp">
+				<form id="changepassword" method="POST" onsubmit="return form_validator(this)" action="/admin/password.jsp">
 					<h2>Change Password</h2>
 					<c:if test="${failure_reason != null}">
 						<div>
