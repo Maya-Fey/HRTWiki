@@ -44,3 +44,54 @@ body {
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 }
+
+/* Sidebar, Regular admin page content */
+
+#main {
+	width: 80%;
+  display: inline-block;
+	vertical-align: top;
+	margin: 2em auto;
+}
+
+#main > div {
+	padding: 0.25em;
+	border: 1px solid black;
+	margin: 0;
+	margin-right: 4vw;
+}
+
+#main > div:nth-child(1) {
+	background-color: black;
+}
+
+#main > div:nth-child(1) > span {
+	color: white;
+}
+
+#main > div:nth-child(1) > span:nth-child(2) {
+	float: right;
+}
+
+#sidebar {
+	width: 20%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#sidebar > table {
+	border: 2px solid black;
+	border-collapse: collapse;
+	width: 80%;
+	margin: 2em auto;
+}
+
+.sidebarcategory, .sidebarentry {
+	padding: 0.25em;
+	border: 1px solid black;
+}
+
+.sidebarcategory {
+	background-color: black;
+	color: white;
+}
