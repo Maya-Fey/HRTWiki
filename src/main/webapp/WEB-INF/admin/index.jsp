@@ -10,7 +10,12 @@
 			<jsp:directive.include file="sidebar.jsp"/>
 		</div><div id="main">
 			<div>
-				Time
+				<span>
+					Admin Home
+				</span>
+				<span>
+					Time
+				</span>
 			</div><div>
 				Hello There
 			</div>
