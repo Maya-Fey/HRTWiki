@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.eclipse.jdt.annotation.Nullable;
 
-import claire.hrt.wiki.commons.Condition;
 import claire.hrt.wiki.commons.Null;
 import claire.hrt.wiki.commons.except.PreconditionViolationException;
 
