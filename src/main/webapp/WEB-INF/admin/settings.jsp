@@ -67,7 +67,7 @@
 						return true;
 					}
 				</script>
-				<form id="changepassword" method="POST" onsubmit="return form_validator(this)" action="/admin/settings.jsp">
+				<form id="changesettings" method="POST" onsubmit="return form_validator(this)" action="/admin/settings.jsp">
 					<h2>Change Settings</h2>
 					<c:if test="${failure_reason != null}">
 						<div id="settingschangefailure">
