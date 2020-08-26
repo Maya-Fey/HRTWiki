@@ -80,6 +80,11 @@
 							${ failure_reason }
 						</div>
 					</c:if>
+					<c:if test="${success != null}">
+						<div>
+							Password changed.
+						</div>
+					</c:if>
 					<table>
 						<tr>
 							<td>Current Password</td>
