@@ -13,7 +13,7 @@ import claire.hrt.wiki.data.except.NoSuchKeyException;
  * 
  * @author Claire
  */
-public interface SessionTable extends DataTable {
+public interface SessionTable extends DataRecord {
 	
 	/**
 	 * @return A brand new session with a unique ID

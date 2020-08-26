@@ -9,7 +9,7 @@ import claire.hrt.wiki.data.except.NoSuchKeyException;
  * 
  * @author Claire
  */
-public interface AuthenticationTable extends DataTable {
+public interface AuthenticationTable extends DataRecord {
 	
 	/**
 	 * @param username A username as a string

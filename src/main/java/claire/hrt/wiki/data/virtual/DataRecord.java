@@ -7,7 +7,7 @@ import java.io.IOException;
  * 
  * @author Claire
  */
-public interface DataTable {
+public interface DataRecord {
 	
 	/**
 	 * Initializes this table from persistent memory
