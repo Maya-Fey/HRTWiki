@@ -73,6 +73,10 @@ body {
 	float: right;
 }
 
+#main > div:nth-child(2) {
+	padding: 1.25em;
+}
+
 #sidebar {
 	width: 20%;
 	display: inline-block;
@@ -94,4 +98,42 @@ body {
 .sidebarcategory {
 	background-color: black;
 	color: white;
+}
+
+/* Change password */
+
+#passwordchangefailure {
+	display: inline-block;
+	margin: 1em;
+	margin-top: 0;
+	margin-left: 0;
+	background-color: #FFAAAA;
+	border: 2px solid #FFAAAA;
+	border-radius: 2px;
+	color: #FF1111;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-right: 1em;
+	padding-left: 1em;
+}
+
+#passwordchangesuccess {
+	display: inline-block;
+	margin: 1em;
+	margin-top: 0;
+	margin-left: 0;
+	background-color: #AAFFAA;
+	border: 2px solid #AAFFAA;
+	border-radius: 2px;
+	color: #009900;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-right: 1em;
+	padding-left: 1em;
+}
+
+#changepassword > table > tbody > tr > td {
+	padding: 0.15em;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
 }

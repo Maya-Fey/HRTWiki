@@ -76,12 +76,12 @@
 				<form id="changepassword" method="POST" onsubmit="return form_validator(this)" action="/admin/password.jsp">
 					<h2>Change Password</h2>
 					<c:if test="${failure_reason != null}">
-						<div>
+						<div id="passwordchangefailure">
 							${ failure_reason }
 						</div>
 					</c:if>
 					<c:if test="${success != null}">
-						<div>
+						<div id="passwordchangesuccess">
 							Password changed.
 						</div>
 					</c:if>
