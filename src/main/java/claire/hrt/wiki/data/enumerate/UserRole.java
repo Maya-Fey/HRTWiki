@@ -48,6 +48,15 @@ public enum UserRole {
 		return this.permissionLevel >= role.permissionLevel;
 	}
 	
+	/**
+	 * @param role The role to check against
+	 * @return Whether the user has more permissions than the given role
+	 */
+	public boolean hasMoreThan(UserRole role)
+	{
+		return this.permissionLevel >= role.permissionLevel;
+	}
+	
 	private static final UserRole[] roles = UserRole.values();
 	/**
 	 * @param i A UserRole ordinal
