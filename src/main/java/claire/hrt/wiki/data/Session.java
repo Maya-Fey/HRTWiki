@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.eclipse.jdt.annotation.Nullable;
 
+import claire.hrt.wiki.commons.Condition;
 import claire.hrt.wiki.commons.Null;
 import claire.hrt.wiki.commons.except.PreconditionViolationException;
 
@@ -97,7 +98,18 @@ public class Session {
 	public void setAuthenticated(User user, long expiresAfter)
 	{
 		this.expiresAfter = expiresAfter;
-		this.user = user;
+		this.user = user; 
+	}
+	
+	/**
+	 * @param newUser A new version of the currently authenticated user.
+	 */
+	public void updateUser(User newUser)
+	{
+		if(!newUser.getUsername().equals(Null.nonNull(this.user).getUsername())) {
+			throw new PreconditionViolationException("Trying to update user with a different user");
+		}
+		this.user = newUser;
 	}
 	
 	/**
