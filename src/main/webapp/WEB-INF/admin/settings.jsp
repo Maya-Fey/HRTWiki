@@ -41,14 +41,14 @@
 							
 						if(field.value.length < min)
 						{
-							alert("Minimum " + name " + length is " + min + " characters");
+							alert("Minimum " + name + " + length is " + min + " characters");
 							field.focus();
 							return false;
 						}
 				
 						if(field.value.length > max)
 						{
-							alert("Please do not enter more than " + max " + characters in the \"" + name + "\" field.");
+							alert("Please do not enter more than " + max + " + characters in the \"" + name + "\" field.");
 							field.focus();
 							return false;
 						}
@@ -68,7 +68,7 @@
 					}
 				</script>
 				<form id="changepassword" method="POST" onsubmit="return form_validator(this)" action="/admin/settings.jsp">
-					<h2>Change Setting</h2>
+					<h2>Change Settings</h2>
 					<c:if test="${failure_reason != null}">
 						<div id="settingschangefailure">
 							${ failure_reason }

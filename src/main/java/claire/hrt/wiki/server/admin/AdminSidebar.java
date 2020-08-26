@@ -23,6 +23,7 @@ public class AdminSidebar {
 	
 	private static final Item[] SIDEBAR_ITEMS = {
 		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Home", "/admin/index.jsp"),
+		new Item(Category.USERSETTINGS, UserRole.EDITOR, "User Settings", "/admin/settings.jsp"),
 		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Change Password", "/admin/password.jsp"),
 		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Logout", "/admin/logout.jsp")
 	};
