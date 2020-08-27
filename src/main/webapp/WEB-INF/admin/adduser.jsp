@@ -73,7 +73,7 @@
 					}
 				</script>
 				<form id="adduser" method="POST" onsubmit="return form_validator(this)" action="/admin/settings.jsp">
-					<h2>Change Settings</h2>
+					<h2>Add User</h2>
 					<c:if test="${failure_reason != null}">
 						<div id="useraddfailure">
 							${ failure_reason }

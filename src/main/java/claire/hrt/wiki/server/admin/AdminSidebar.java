@@ -24,10 +24,10 @@ import claire.hrt.wiki.data.enumerate.UserRole;
 public class AdminSidebar {
 	
 	private static final Item[] SIDEBAR_ITEMS = {
-		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Home", "/admin/index.jsp"),
+		new Item(Category.USERSETTINGS, UserRole.BANNED, "Home", "/admin/index.jsp"),
 		new Item(Category.USERSETTINGS, UserRole.EDITOR, "User Settings", "/admin/settings.jsp"),
 		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Change Password", "/admin/password.jsp"),
-		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Logout", "/admin/logout.jsp"),
+		new Item(Category.USERSETTINGS, UserRole.BANNED, "Logout", "/admin/logout.jsp"),
 		new Item(Category.USERADMIN, UserRole.ADMIN, "Add User", "/admin/adduser.jsp")
 	};
 	
