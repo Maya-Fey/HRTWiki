@@ -101,7 +101,7 @@ public class UserTableImpl implements UserTable {
 
 	@Override
 	public int records() {
-		return users.size();
+		return this.users.size();
 	}
 
 }
