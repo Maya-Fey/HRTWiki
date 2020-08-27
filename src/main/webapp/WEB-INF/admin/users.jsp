@@ -17,42 +17,7 @@
 					Time
 				</span>
 			</div><div>
-				<table class="datatable">
-					<thead>
-						<tr>
-							<td>
-								Username
-							</td>
-							<td>
-								Display Name
-							</td>
-							<td>
-								Pronouns
-							</td>
-							<td>
-								Role
-							</td>
-						</tr>
-					</thead>
-					<tbody>
-					<c:forEach var="user" items="${ users }">
-						<tr>
-							<td>
-								${ user.getUsername() }
-							</td>
-							<td>
-								${ user.getDisplayName() }
-							</td>
-							<td>
-								${ user.getPronouns() }
-							</td>
-							<td>
-								${ user.getPermissions().toString() }
-							</td>
-						</tr>
-					</c:forEach>
-					</tbody>
-				</table>
+				<h2>Users</h2>
 				<div class="datatablenav">
 					<span>
 					<c:if test="${ current > per }">
@@ -97,6 +62,42 @@
 					</c:if>
 					</span>
 				</div>
+				<table class="datatable">
+					<thead>
+						<tr>
+							<td>
+								Username
+							</td>
+							<td>
+								Display Name
+							</td>
+							<td>
+								Pronouns
+							</td>
+							<td>
+								Role
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach var="user" items="${ users }">
+						<tr>
+							<td>
+								${ user.getUsername() }
+							</td>
+							<td>
+								${ user.getDisplayName() }
+							</td>
+							<td>
+								${ user.getPronouns() }
+							</td>
+							<td>
+								${ user.getPermissions().toString() }
+							</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</body>
