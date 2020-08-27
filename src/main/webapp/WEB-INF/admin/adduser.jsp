@@ -115,7 +115,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="submit" value="Change Settings"/></td>
+							<td><input type="submit" value="Add User"/></td>
 						</tr>
 					</table>
 				</form>

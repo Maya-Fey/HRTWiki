@@ -102,7 +102,7 @@ body {
 
 /* Change password */
 
-#passwordchangefailure, #settingschangefailure {
+#passwordchangefailure, #settingschangefailure, #useraddfailure {
 	display: inline-block;
 	margin: 1em;
 	margin-top: 0;
@@ -117,7 +117,7 @@ body {
 	padding-left: 1em;
 }
 
-#passwordchangesuccess, #settingschangesuccess {
+#passwordchangesuccess, #settingschangesuccess, #useraddsuccess {
 	display: inline-block;
 	margin: 1em;
 	margin-top: 0;
@@ -132,7 +132,7 @@ body {
 	padding-left: 1em;
 }
 
-#changepassword > table > tbody > tr > td , #changesettings > table > tbody > tr > td {
+#changepassword > table > tbody > tr > td , #changesettings > table > tbody > tr > td, #adduser > table > tbody > tr > td {
 	padding: 0.15em;
 	padding-left: 0.3em;
 	padding-right: 0.3em;
