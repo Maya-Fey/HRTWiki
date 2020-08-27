@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import org.eclipse.jdt.annotation.NonNull;
 
@@ -40,7 +42,7 @@ public class AdminSidebar {
 		if(CACHE.containsKey(role))
 			return CACHE.get(role);
 		
-		@NonNull Map<Category, List<Item>> ret = new HashMap<>();
+		@NonNull SortedMap<Category, List<Item>> ret = new TreeMap<>();
 		
 		for(Item item : SIDEBAR_ITEMS)
 		{
@@ -51,9 +53,9 @@ public class AdminSidebar {
 			}
 		}
 		
-		ret = Null.nonNull(Collections.unmodifiableMap(ret));
-		CACHE.put(role, ret);
-		return ret;
+		Map<Category, List<Item>> retfinal = Null.nonNull(Collections.unmodifiableMap(ret));
+		CACHE.put(role, retfinal);
+		return retfinal;
 	}
 	
 	/**
@@ -122,6 +124,9 @@ public class AdminSidebar {
 		 * The user settings category. Contains settings, info, login/out
 		 */
 		USERSETTINGS("User Settings"),
+		/**
+		 * 
+		 */
 		USERADMIN("User Administration");
 		
 		/**
