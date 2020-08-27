@@ -86,7 +86,7 @@
 					</c:if>
 					<table>
 						<tr>
-							<td>Display Name</td>
+							<td>Username</td>
 							<td><input type="text" name="username"></td>
 						</tr>
 						<tr>
@@ -101,8 +101,8 @@
 							<td>Role</td>
 							<td>
 								<select name="role">
-								<c:forEach var="role" items="UserRole.values();">
-									<option value="${ role.ordinal() }">${ role.toString(); }</option>
+								<c:forEach var="role" items="${ UserRole.values() }">
+									<option value="${ role.ordinal() }">${ role.toString() }</option>
 								</c:forEach>
 								</select>
 							</td>

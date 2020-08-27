@@ -25,7 +25,8 @@ public class AdminSidebar {
 		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Home", "/admin/index.jsp"),
 		new Item(Category.USERSETTINGS, UserRole.EDITOR, "User Settings", "/admin/settings.jsp"),
 		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Change Password", "/admin/password.jsp"),
-		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Logout", "/admin/logout.jsp")
+		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Logout", "/admin/logout.jsp"),
+		new Item(Category.USERADMIN, UserRole.ADMIN, "Add User", "/admin/adduser.jsp")
 	};
 	
 	private static final Map<UserRole, Map<Category, List<Item>>> CACHE = new HashMap<>();
@@ -120,7 +121,8 @@ public class AdminSidebar {
 		/**
 		 * The user settings category. Contains settings, info, login/out
 		 */
-		USERSETTINGS("User Settings");
+		USERSETTINGS("User Settings"),
+		USERADMIN("User Administration");
 		
 		/**
 		 * The name of this category

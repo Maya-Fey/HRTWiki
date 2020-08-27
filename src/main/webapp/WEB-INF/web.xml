@@ -44,6 +44,14 @@
         <servlet-name>ServLogout</servlet-name>
         <url-pattern>/admin/logout.jsp</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>ServAddUser</servlet-name>
+        <servlet-class>claire.hrt.wiki.server.admin.AddUserServlet</servlet-class>
+    </servlet>   
+    <servlet-mapping>
+        <servlet-name>ServAddUser</servlet-name>
+        <url-pattern>/admin/adduser.jsp</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>AdminCSS</servlet-name>
         <servlet-class>claire.hrt.wiki.server.admin.AdminStyleServlet</servlet-class>
