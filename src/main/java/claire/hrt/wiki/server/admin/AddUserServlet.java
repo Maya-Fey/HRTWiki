@@ -84,8 +84,8 @@ public class AddUserServlet extends AbstractStateServlet {
 		try {
 			WebState.INST.auth.write(username, password);
 			WebState.INST.users.addUser(user);
+			request.setAttribute("success", "true");
 		} catch (@SuppressWarnings("unused") DuplicateKeyException e) { /***/ }
-		request.setAttribute("success", "true");
 		this.get(request, session, response);
 	}
 	

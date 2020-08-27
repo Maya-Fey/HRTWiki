@@ -72,7 +72,7 @@
 						return true;
 					}
 				</script>
-				<form id="adduser" method="POST" onsubmit="return form_validator(this)" action="/admin/settings.jsp">
+				<form id="adduser" method="POST" onsubmit="return form_validator(this)" action="/admin/adduser.jsp">
 					<h2>Add User</h2>
 					<c:if test="${failure_reason != null}">
 						<div id="useraddfailure">
