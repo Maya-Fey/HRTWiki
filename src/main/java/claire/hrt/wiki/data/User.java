@@ -54,7 +54,7 @@ public class User {
 	 * @param permissions
 	 * @param properties
 	 */
-	User(String username, String displayName, String pronouns, UserRole permissions, Map<String, String> properties)
+	public User(String username, String displayName, String pronouns, UserRole permissions, Map<String, String> properties)
 	{
 		this.username = username;
 		this.displayName = displayName;
