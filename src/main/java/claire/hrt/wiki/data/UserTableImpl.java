@@ -7,8 +7,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import claire.hrt.wiki.commons.Null;
 import claire.hrt.wiki.data.except.DuplicateKeyException;
@@ -23,7 +27,7 @@ import claire.hrt.wiki.data.virtual.UserTable;
  */
 public class UserTableImpl implements UserTable {
 
-	private final Map<String, User> users = new HashMap<>();
+	private final SortedMap<String, User> users = new TreeMap<>();
 	
 	private boolean initialized;
 
@@ -81,6 +85,23 @@ public class UserTableImpl implements UserTable {
 				writer.println(user.persist());
 			}
 		}
+	}
+
+	@Override
+	public List<User> getStartingFrom(int starting, int limit) {
+		//Holy shit just kill me. How do you not return a List if your elements are ordered.
+		//Technically this saves memory as we're not storing two lists. Technically.
+		Iterator<User> iter = this.users.values().iterator();
+		while(starting-- > 0) iter.next();
+		List<User> ret = new ArrayList<>(limit - Math.max(0, (starting + limit) - this.users.size()));
+		while(iter.hasNext() && limit-- > 0) ret.add(iter.next());
+		return Null.nonNull(Collections.unmodifiableList(ret));
+		
+	}
+
+	@Override
+	public int records() {
+		return users.size();
 	}
 
 }
