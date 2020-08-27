@@ -28,7 +28,8 @@ public class AdminSidebar {
 		new Item(Category.USERSETTINGS, UserRole.EDITOR, "User Settings", "/admin/settings.jsp"),
 		new Item(Category.USERSETTINGS, UserRole.EDITOR, "Change Password", "/admin/password.jsp"),
 		new Item(Category.USERSETTINGS, UserRole.BANNED, "Logout", "/admin/logout.jsp"),
-		new Item(Category.USERADMIN, UserRole.ADMIN, "Add User", "/admin/adduser.jsp")
+		new Item(Category.USERADMIN, UserRole.ADMIN, "Add User", "/admin/adduser.jsp"),
+		new Item(Category.USERADMIN, UserRole.ADMIN, "Users", "/admin/users.jsp")
 	};
 	
 	private static final Map<UserRole, Map<Category, List<Item>>> CACHE = new HashMap<>();

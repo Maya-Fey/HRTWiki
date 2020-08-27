@@ -55,13 +55,13 @@
 				</table>
 				<div class="datatablenav">
 					<span>
-					<c:if test="${ current > per) }">
+					<c:if test="${ current > per }">
 						<a href="users.jsp?current=0&per=${ per }">
 							First
 						</a>
 					</c:if>
-					<c:if test="${ current > 0) }">
-						<a href="users.jsp?current=${ (int) Math.max(0, current - per)) }&per=${ per }">
+					<c:if test="${ current > 0 }">
+						<a href="users.jsp?current=${ (current - par) < 0 ? 0 : (current - per) }&per=${ per }">
 							Prev
 						</a>
 					</c:if>
@@ -69,24 +69,28 @@
 					<span>
 						Showing 
 						<select>
-						<c:forEach var="selectPer" items="${ new int[] \{ 25, 50, 75, 100 \} }">
+						<c:forEach var="selectPer" items="${ options }">
 						<c:if test="${ selectPer == per }">
 							<option value="${ selectPer }" selected="selected">
+								${ selectPer }
+							</option>
 						</c:if>
 						<c:if test="${ selectPer != per }">
 							<option value="${ selectPer }">
+								${ selectPer }
+							</option>
 						</c:if>
 						</c:forEach>
 						</select>
-						users
+						users out of ${ max }
 					</span>
 					<span>
-					<c:if test="${ current > (max - per)) }">
+					<c:if test="${ current < (max - per) }">
 						<a href="users.jsp?current=${ current + per }&per=${ per }">
 							Next
 						</a>
 					</c:if>
-					<c:if test="${ current < (max - per)) }">
+					<c:if test="${ current < (max - per) }">
 						<a href="users.jsp?current=${ max - per }&per=${ per }">
 							Last
 						</a>
