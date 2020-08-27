@@ -31,6 +31,7 @@ public class AddUserServlet extends AbstractStateServlet {
 		request.setAttribute("name_allowedchars", SettingsServlet.NAME_ALLOWED);
 		request.setAttribute("pronoun_allowedchars", SettingsServlet.PRONOUN_ALLOWED);
 		request.setAttribute("password_allowedchars", LoginServlet.PASSWORD_ALLOWED);
+		request.setAttribute("userRole", session.getUser().getPermissions());
 		request.getRequestDispatcher("/WEB-INF/admin/adduser.jsp").forward(request, response);
     }
 	

@@ -102,7 +102,9 @@
 							<td>
 								<select name="role">
 								<c:forEach var="role" items="${ UserRole.values() }">
+								<c:if test="${ userRole.hasMoreThan(role) }">
 									<option value="${ role.ordinal() }">${ role.toString() }</option>
+								</c:if>
 								</c:forEach>
 								</select>
 							</td>

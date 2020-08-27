@@ -54,7 +54,7 @@ public enum UserRole {
 	 */
 	public boolean hasMoreThan(UserRole role)
 	{
-		return this.permissionLevel >= role.permissionLevel;
+		return this.permissionLevel > role.permissionLevel;
 	}
 	
 	private static final UserRole[] roles = UserRole.values();
